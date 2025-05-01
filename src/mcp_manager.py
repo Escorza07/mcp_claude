@@ -133,23 +133,24 @@ class MCPManager:
             return False
 
     async def install_npx_packages(self):
-        """Instala los paquetes NPX necesarios"""
-        print("\n=== Instalación de paquetes NPX ===")
-        respuesta = input("\n¿Deseas instalar los paquetes NPX ahora? (s/n): ").lower()
+        """Instala el paquete NPX de brave-search"""
+        print("\n=== Instalación de paquete NPX ===")
+        respuesta = input("\n¿Deseas instalar el paquete NPX de brave-search ahora? (s/n): ").lower()
         if respuesta != 's':
-            print("Omitiendo instalación de paquetes NPX...")
+            print("Omitiendo instalación de paquete NPX...")
             return
 
-        print("\nInstalando paquetes NPX...")
-        for mcp_name, mcp_config in NPX_MCPS.items():
-            package = mcp_config["package"]
-            print(f"\nInstalando {package}...")
-            try:
-                # Instalar el paquete de manera simple
-                await self.run_command(f"npm install {package}")
-                print(f"{package} instalado correctamente")
-            except Exception as e:
-                print(f"Error instalando {package}: {e}")
+        # Cambiar al directorio del usuario
+        user_dir = os.path.expanduser("~")
+        os.chdir(user_dir)
+        print(f"\nInstalando en: {user_dir}")
+
+        print("\nInstalando @modelcontextprotocol/server-brave-search...")
+        try:
+            await self.run_command("npm i @modelcontextprotocol/server-brave-search")
+            print("Paquete instalado correctamente")
+        except Exception as e:
+            print(f"Error instalando el paquete: {e}")
 
     async def setup_all_mcps(self):
         """Configura todos los MCPs listados en la configuración."""

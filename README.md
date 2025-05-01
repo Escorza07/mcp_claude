@@ -36,8 +36,11 @@ git clone [URL_DEL_REPOSITORIO]
 ```
 REPOSITORIES_BASE_PATH=C:/ruta/deseada/para/mcps
 ```
+### 2. Configuración de Variables de Entorno
 
-### 2. Instalación de Dependencias
+1. Crea un archivo `.env` en la carpeta `config/` basado en el siguiente formato de .env.example y pon ahi tus credenciales, si no se tiene el refresh token lo puedes obtener en el paso 4.
+
+### 3. Instalación de Dependencias
 
 1. Debes instalar manualmente el compilador GCC (útil para compilar módulos nativos de Node.js y otras dependencias que requieren compilación), ejecuta:
 ```
@@ -49,15 +52,9 @@ REPOSITORIES_BASE_PATH=C:/ruta/deseada/para/mcps
 .\scripts\install_dependencies.ps1
 ```
 
-3. Para verificar que todo se ha instalado correctamente debe haber un conjunto de rutas en el archivo defaul.properties.
+3. Para verificar que todo se ha instalado correctamente debe haber un conjunto de rutas en el archivo default.properties.
 
-4. Si por equivocacion primero ejecutaste .\scripts\install_dependencies.ps1 te recomendara primero instalar el gcc para que se considere las instlaciones exitosas, entonces cierra el powershell, ejecuta (tdm64-gcc-10.3.0-2.exe) y luego vuelve a ejcutar .\scripts\install_dependencies.ps1 en powershell, ahora si las rutas deberian aparecer en defaul.properties.
-
-
-### 3. Configuración de Variables de Entorno
-
-1. Crea un archivo `.env` en la carpeta `config/` basado en el siguiente formato de .env.example y pon ahi tus credenciales, si no se tiene el refresh token lo puedes obtener en el sigueinte paso.
-
+4. Si por equivocacion primero ejecutaste .\scripts\install_dependencies.ps1 te recomendara primero instalar el gcc para que se considere las instlaciones exitosas, entonces cierra el powershell, ejecuta (tdm64-gcc-10.3.0-2.exe) y luego vuelve a ejcutar .\scripts\install_dependencies.ps1 en powershell, ahora si las rutas deberian aparecer en default.properties.
 
 ### 4. Configuración de Autenticación Google
 
@@ -147,7 +144,8 @@ mcp_claude/
 2. **borrar carpeta whatsapp**:
    - Si hay un error en la instalacion de algun mcp y deseas instalarlo de nuevo, recuerda eliminar la carpeta para que se vuelva a clonar nuevamente
    - recuerda que a veces te dira que no puede borrarla y es porque esta siendo utiliza, ya sea por powershell, un cmd, etc
-   - el mcp de whatsapp utiliza entornos, entonces para eliminar primero ejecuta: tasklist | findstr python.exe luego ya se podra eliminar la carpeta
+   - el mcp de whatsapp utiliza entornos, entonces para eliminar primero ejecuta: 
+   taskkill /F /IM python.exe luego ya se podra eliminar la carpeta
 
 3. **Error al encontrar el archivo .env**:
    - Asegúrate de que el archivo existe en `config/.env`
@@ -175,6 +173,9 @@ mcp_claude/
 7. **no funciona go run main.go**:
    - Aveces algun antivirus toma el archivo main.exe y lo pone en cuarentena tomandolo como amenaza
    - Restaura el main .exe y quitalo de cuarentena
+
+8. **error en brave ${APPDATA}**:
+   - abre un cmd y ejecuta npm i @modelcontextprotocol/server-brave-search, vuelve a abrir claude desde 0.
    
 ## Mantenimiento
 

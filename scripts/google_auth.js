@@ -6,8 +6,6 @@ const http = require('http');
 
 // Función para leer variables de entorno desde .env
 function loadEnvVars() {
-    console.log('__dirname:', __dirname);
-    console.log('process.cwd():', process.cwd());
     
     // Intentar múltiples ubicaciones posibles para el archivo .env
     const possiblePaths = [
@@ -15,9 +13,6 @@ function loadEnvVars() {
         path.join(process.cwd(), 'config/.env'),
         path.join(process.cwd(), '.env')
     ];
-    
-    console.log('Rutas que se intentarán:');
-    possiblePaths.forEach(p => console.log('-', p));
     
     let envPath = null;
     for (const possiblePath of possiblePaths) {
