@@ -34,7 +34,7 @@ git clone [URL_DEL_REPOSITORIO]
 
 2. Configura la ruta base para los repositorios en `config/default.properties`:
 ```
-REPOSITORIES_BASE_PATH=C:/ruta/deseada/para/mcps
+REPOSITORIES_BASE_PATH=C:/donde/estaran/tus/mcps
 ```
 ### 2. Configuración de Variables de Entorno
 
@@ -88,7 +88,7 @@ cd %REPOSITORIES_BASE_PATH%/whatsapp-mcp/whatsapp-bridge
 go run main.go
 ```
 
-2. Escanea el código QR que aparece en la terminal con tu teléfono y esperar que termine de sincronizar los mensajes.
+2. Escanea el código QR que aparece en la terminal con tu teléfono (whatsapp)y esperar que termine de sincronizar los mensajes.
 
 3. Para evitar tener que mantener una terminal abierta, instala el servicio de WhatsApp:
 ```powershell
@@ -141,7 +141,7 @@ mcp_claude/
    - Si la carpeta existe, el sistema asumirá que el MCP está correctamente instalado y no intentará clonarlo nuevamente
    - Solo eliminando la carpeta podrás forzar una nueva clonación y configuración del MCP
 
-2. **borrar carpeta whatsapp**:
+2. **Borrar carpeta whatsapp**:
    - Si hay un error en la instalacion de algun mcp y deseas instalarlo de nuevo, recuerda eliminar la carpeta para que se vuelva a clonar nuevamente
    - recuerda que a veces te dira que no puede borrarla y es porque esta siendo utiliza, ya sea por powershell, un cmd, etc
    - el mcp de whatsapp utiliza entornos, entonces para eliminar primero ejecuta: 
@@ -170,11 +170,11 @@ mcp_claude/
    -si vuelves a ejecutar .\scripts\setup_whatsapp_service.ps1 recuerda eliminar primero el servicio antiguo con el siguiente comando: nssm remove whatsapp-bridge confirm
    - si te salen errores de que no puede escuchar el puerto, es porque otro servicio lo esta usando.
 
-7. **no funciona go run main.go**:
+7. **No funciona go run main.go**:
    - Aveces algun antivirus toma el archivo main.exe y lo pone en cuarentena tomandolo como amenaza
    - Restaura el main .exe y quitalo de cuarentena
 
-8. **error en brave ${APPDATA}**:
+8. **Error en brave ${APPDATA}**:
    - abre un cmd y ejecuta npm i @modelcontextprotocol/server-brave-search, vuelve a abrir claude desde 0.
    
 ## Mantenimiento
