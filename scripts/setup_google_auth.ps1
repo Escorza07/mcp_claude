@@ -28,8 +28,7 @@ Write-Host "Este proceso solicitará permisos para:"
 Write-Host "- Google Calendar"
 Write-Host "- Gmail"
 Write-Host "`nSigue las instrucciones en pantalla para completar la autenticación."
-Write-Host "Presiona Enter para continuar..."
-Read-Host
+Write-Host "Espera un momento mientras se prepara la autenticación..."
 
 node $googleAuthPath
 
