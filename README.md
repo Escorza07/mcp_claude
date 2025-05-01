@@ -88,12 +88,13 @@ cd %REPOSITORIES_BASE_PATH%/whatsapp-mcp/whatsapp-bridge
 go run main.go
 ```
 
-2. Escanea el código QR que aparece en la terminal con tu teléfono (whatsapp)y esperar que termine de sincronizar los mensajes debe salir un mensaje asi: (History sync complete...).
+2. Escanea el código QR que aparece en la terminal con tu teléfono (whatsapp)y esperar que termine de sincronizar los mensajes debe salir un mensaje asi: (History sync complete...) al terminar aun no cierres la ventanda del cmd.
 
 3. Para evitar tener que mantener una terminal abierta, instala el servicio de WhatsApp:
 ```powershell
 .\scripts\setup_whatsapp_service.ps1
 ```
+Ahora ya puede cerrar tanto el cmd como el powershell, si por algun momento algo falla revise la sección de problemas comunes.
 
 Este servicio se ejecutará en segundo plano y mantendrá la sesión de WhatsApp activa.
 
@@ -176,6 +177,10 @@ mcp_claude/
 
 8. **Error en brave ${APPDATA}**:
    - abre un cmd y ejecuta npm i @modelcontextprotocol/server-brave-search, vuelve a abrir claude desde 0.
+
+9. **Error claude - >  Failed to establish a new connection**:
+   - A veces no siempre funciona a la primera, simplemente vuelve a abrir el powershell, dirigirte a la ruta de tu proyecto y ejecutar .\scripts\setup_whatsapp_service.ps1.
+   - Luego vuelve a pedir a claude que envie un mensaje de whatsapp y verifica.
    
 ## Mantenimiento
 
