@@ -1,0 +1,55 @@
+{
+  "base_path": "%REPOSITORIES_BASE_PATH%",
+  "repositories": [
+    {
+      "name": "mcp-server-trello",
+      "url": "https://github.com/Escorza07/server-trello-mcp.git",
+      "type": "node",
+      "required_env": [
+        "TRELLO_API_KEY",
+        "TRELLO_TOKEN",
+        "TRELLO_BOARD_ID"
+      ],
+      "env_vars": {
+        "TRELLO_API_KEY": "%TRELLO_API_KEY%",
+        "TRELLO_TOKEN": "%TRELLO_TOKEN%",
+        "TRELLO_BOARD_ID": "%TRELLO_BOARD_ID%"
+      }
+    },
+    {
+      "name": "mcp-google-calendar",
+      "url": "https://github.com/Escorza07/google-calendar-mcp.git",
+      "type": "node",
+      "env_vars": {
+        "GOOGLE_CLIENT_ID": "%GOOGLE_CLIENT_ID%",
+        "GOOGLE_CLIENT_SECRET": "%GOOGLE_CLIENT_SECRET%",
+        "GOOGLE_REFRESH_TOKEN": "%GOOGLE_REFRESH_TOKEN%",
+        "GOOGLE_REDIRECT_URI": "%GOOGLE_REDIRECT_URI%"
+      }
+    },
+    {
+      "name": "mcp-gmail-extension",
+      "url": "https://github.com/Escorza07/mcp-gmail-extension.git",
+      "type": "node",
+      "env_vars": {
+        "GOOGLE_CLIENT_ID": "%GOOGLE_CLIENT_ID%",
+        "GOOGLE_CLIENT_SECRET": "%GOOGLE_CLIENT_SECRET%",
+        "GOOGLE_REFRESH_TOKEN": "%GOOGLE_REFRESH_TOKEN%",
+        "GOOGLE_REDIRECT_URI": "%GOOGLE_REDIRECT_URI%"
+      }
+    },
+    {
+      "name": "linkedin-extract-mcp",
+      "url": "https://github.com/Escorza07/linkedin-extract-mcp.git",
+      "type": "node",
+      "env_vars": {
+        "APIFY_TOKEN": "%APIFY_TOKEN%"
+      }
+    },
+    {
+      "name": "whatsapp-mcp",
+      "url": "https://github.com/Escorza07/whatsapp-mcp.git",
+      "type": "node"
+    }
+  ]
+}
