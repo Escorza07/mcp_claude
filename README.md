@@ -88,7 +88,7 @@ cd %REPOSITORIES_BASE_PATH%/whatsapp-mcp/whatsapp-bridge
 go run main.go
 ```
 
-2. Escanea el código QR que aparece en la terminal con tu teléfono (whatsapp)y esperar que termine de sincronizar los mensajes.
+2. Escanea el código QR que aparece en la terminal con tu teléfono (whatsapp)y esperar que termine de sincronizar los mensajes debe salir un mensaje asi: (History sync complete...).
 
 3. Para evitar tener que mantener una terminal abierta, instala el servicio de WhatsApp:
 ```powershell
