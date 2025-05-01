@@ -57,6 +57,7 @@ function Update-PropertiesFile {
 
 # Leer configuraciones de default.properties
 $configPath = "config/default.properties"
+$nodeVersionMin = Get-PropertyValue -filePath $configPath -propertyName "node_version_min"
 $nodeVersion = Get-PropertyValue -filePath $configPath -propertyName "node_version"
 $repositoriesPath = Get-PropertyValue -filePath $configPath -propertyName "REPOSITORIES_BASE_PATH"
 
@@ -85,10 +86,10 @@ function Test-NvmInstalled {
 # Función para verificar la versión de Node.js
 function Test-NodeVersion {
     try {
-        $nodeVersion = node --version
-        $versionNumber = [version]($nodeVersion -replace 'v', '')
-        $minVersion = [version]"18.0.0"
-        return $versionNumber -ge $minVersion
+        $currentNodeVersion = node --version
+        $currentVersionNumber = [version]($currentNodeVersion -replace 'v', '')
+        $minVersionNumber = [version]$nodeVersionMin
+        return $currentVersionNumber -ge $minVersionNumber
     } catch {
         return $false
     }
@@ -121,10 +122,10 @@ if ($nvmInstalled) {
     Write-Host "nvm detectado. Usando nvm para gestionar Node.js..."
     
     if (-not $nodeVersionOk) {
-        Write-Host "Instalando Node.js 18.17.0 con nvm..."
-        nvm install 18.17.0
-        nvm use 18.17.0
-        nvm alias default 18.17.0
+        Write-Host "Instalando Node.js $nodeVersion con nvm..."
+        nvm install $nodeVersion
+        nvm use $nodeVersion
+        nvm alias default $nodeVersion
         Update-Path
         refreshenv
     } else {
@@ -201,7 +202,7 @@ if (-not $npmVersion) {
     Write-Host "Desinstalando Node.js..."
     choco uninstall nodejs -y --force
     Write-Host "Instalando Node.js nuevamente..."
-    choco install nodejs --version=20.11.1 -y --force
+    choco install nodejs --version=$nodeVersion -y --force
     
     # Actualizar PATH
     Update-Path
@@ -213,7 +214,7 @@ if (-not $npmVersion) {
         Write-Host "Error: No se pudo instalar npm. Por favor:"
         Write-Host "1. Reinicia tu computadora"
         Write-Host "2. Abre PowerShell como administrador"
-        Write-Host "3. Ejecuta: choco install nodejs --version=20.11.1 -y"
+        Write-Host "3. Ejecuta: choco install nodejs --version=$nodeVersion -y"
         exit 1
     }
 } else {
