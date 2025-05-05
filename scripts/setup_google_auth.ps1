@@ -33,5 +33,3 @@ Write-Host "Espera un momento mientras se prepara la autenticación..."
 node $googleAuthPath
 
 Write-Host "`nProceso de autenticación completado."
-Write-Host "Si necesitas actualizar los MCPs con el nuevo token, ejecuta:"
-Write-Host "python setup.py" 

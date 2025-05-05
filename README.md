@@ -64,7 +64,7 @@ REPOSITORIES_BASE_PATH=C:/donde/estaran/tus/mcps
 ```
 
 2. Sigue las instrucciones en pantalla para autorizar la aplicación.
-3. El script generará automáticamente el archivo `google_auth.json` y actualizará el refresh token en el archivo `.env`, si no ves que se actualizo en el archivo .env, hazlo manualmente.
+3. El script generará automáticamente el archivo `google_auth.json` y actualizará el refresh token en el archivo `.env`, si no ves que se actualizo en el archivo .env, hazlo manualmente, el refresh token se encontrara en el archivo `google_auth.json`.
 
 ### 5. Instalación de MCPs
 

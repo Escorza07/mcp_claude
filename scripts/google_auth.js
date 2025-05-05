@@ -99,25 +99,25 @@ rl.question('Ingresa el código de autorización: ', async (code) => {
         const configPath = path.join(__dirname, '..', 'config', 'google_auth.json');
         fs.writeFileSync(configPath, JSON.stringify(tokens, null, 2));
         
+        // Actualizar el archivo .env con el nuevo refresh token
+        const envPath = path.join(__dirname, '..', 'config', '.env');
+        let envContent = fs.readFileSync(envPath, 'utf8');
+        
+        // Buscar y reemplazar el GOOGLE_REFRESH_TOKEN
+        const refreshTokenRegex = /^GOOGLE_REFRESH_TOKEN=.*$/m;
+        if (refreshTokenRegex.test(envContent)) {
+            envContent = envContent.replace(refreshTokenRegex, `GOOGLE_REFRESH_TOKEN=${tokens.refresh_token}`);
+        } else {
+            // Si no existe, agregarlo al final del archivo
+            envContent += `\nGOOGLE_REFRESH_TOKEN=${tokens.refresh_token}`;
+        }
+        
+        fs.writeFileSync(envPath, envContent);
+        
         console.log('\n¡Autenticación exitosa!');
         console.log('Tokens guardados en:', configPath);
         console.log('Refresh Token:', tokens.refresh_token);
-        
-        // Actualizar repositories.json con el nuevo token
-        const reposPath = path.join(__dirname, '..', 'config', 'repositories.json');
-        const repos = JSON.parse(fs.readFileSync(reposPath, 'utf8'));
-        
-        // Actualizar tokens en todos los MCPs de Google
-        repos.repositories.forEach(repo => {
-            if (repo.name.includes('google') || repo.name.includes('gmail')) {
-                if (repo.env_vars) {
-                    repo.env_vars.GOOGLE_REFRESH_TOKEN = tokens.refresh_token;
-                }
-            }
-        });
-        
-        fs.writeFileSync(reposPath, JSON.stringify(repos, null, 2));
-        console.log('repositories.json actualizado con el nuevo token');
+        console.log('Refresh Token actualizado en el archivo .env');
         
     } catch (error) {
         console.error('\nError al obtener tokens:', error.message);
